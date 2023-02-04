@@ -46,28 +46,11 @@ const NavbarView = ({ classes }) => {
             underline="none"
             color="inherit"
             className={classes.title}
-            href="/premium-themes/onepirate/"
+            href="/"
           >
-            {"onepirate"}
+            {"유닉스 타임스탬프 변환기"}
           </Link>
           <div className={classes.right}>
-            {/* <Link
-              color="inherit"
-              variant="h6"
-              underline="none"
-              className={classes.rightLink}
-              href="/premium-themes/onepirate/sign-in/"
-            >
-              {"Sign In"}
-            </Link> */}
-            {/* <Link
-              variant="h6"
-              underline="none"
-              className={clsx(classes.rightLink, classes.linkSecondary)}
-              href="/premium-themes/onepirate/sign-up/"
-            >
-              {"Sign Up"}
-            </Link> */}
           </div>
         </Toolbar>
       </AppBar>

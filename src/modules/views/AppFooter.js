@@ -51,13 +51,14 @@ const useStyles = makeStyles(theme => ({
 
 const LANGUAGES = [
   {
-    code: "en-US",
-    name: "English"
+    code: "ko-KR",
+    name: "Korean"
   },
-  {
-    code: "fr-FR",
-    name: "Français"
-  }
+
+  // {
+  //   code: "en-US",
+  //   name: "English"
+  // },
 ];
 
 export default function AppFooter() {
@@ -76,23 +77,17 @@ export default function AppFooter() {
               spacing={2}
             >
               <Grid item className={classes.icons}>
-                <a href="https://material-ui.com/" className={classes.icon}>
-                  <img
-                    src="/static/themes/onepirate/appFooterFacebook.png"
-                    alt="Facebook"
+                <a href="https://youtube.com/@yanabu/" >
+                  <img src={process.env.PUBLIC_URL + '/youtube.png'} alt="Twitter" 
+                  width="24" height="24"           style={{ marginRight: '10px' }}
                   />
                 </a>
-                <a
-                  href="https://twitter.com/MaterialUI"
-                  className={classes.icon}
-                >
-                  <img
-                    src="/static/themes/onepirate/appFooterTwitter.png"
-                    alt="Twitter"
-                  />
+                <a href="https://twitter.com/yanabu">
+                  <img src={process.env.PUBLIC_URL + '/twitter.png'} alt="Twitter" 
+                      width="24" height="24"/>
                 </a>
               </Grid>
-              <Grid item>© 2019 Onepirate</Grid>
+              <Grid item>© 2023 yanabu</Grid>
             </Grid>
           </Grid>
           <Grid item xs={6} sm={4} md={2}>
@@ -101,10 +96,10 @@ export default function AppFooter() {
             </Typography>
             <ul className={classes.list}>
               <li className={classes.listItem}>
-                <Link href="/premium-themes/onepirate/terms/">Terms</Link>
+                <Link href="/terms/">Terms</Link>
               </li>
               <li className={classes.listItem}>
-                <Link href="/premium-themes/onepirate/privacy/">Privacy</Link>
+                <Link href="/privacy/">Privacy</Link>
               </li>
             </ul>
           </Grid>
@@ -128,31 +123,7 @@ export default function AppFooter() {
           </Grid>
           <Grid item>
             <Typography variant="caption">
-              {"Icons made by "}
-              <Link
-                href="https://www.freepik.com"
-                rel="nofollow"
-                title="Freepik"
-              >
-                Freepik
-              </Link>
-              {" from "}
-              <Link
-                href="https://www.flaticon.com"
-                rel="nofollow"
-                title="Flaticon"
-              >
-                www.flaticon.com
-              </Link>
-              {" is licensed by "}
-              <Link
-                href="https://creativecommons.org/licenses/by/3.0/"
-                title="Creative Commons BY 3.0"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                CC 3.0 BY
-              </Link>
+            야나부 툴입니다. 온라인으로 간편하게 사용할 수 있는 툴을 제공합니다. 
             </Typography>
           </Grid>
         </Grid>

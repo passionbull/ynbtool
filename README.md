@@ -1,2 +1,5 @@
 # ynbtools
-Created with CodeSandbox
+- npm install
+- npm start
+- npm build
+

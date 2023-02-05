@@ -8,12 +8,42 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexWrap: "wrap",
     justifyContent: 'center',
-    width:'70%' // default
+    // width:'70%' // default
+    [theme.breakpoints.down('500')]: { // mobile breakpoint
+      width:'100%' // override for mobile 
+    },
+    [theme.breakpoints.up('501')]: { // desktop breakpoint and above 
+      width:'70%' // default value 
+    } 
   },
+  // button:{
+  //   height:'10%',
+  //   [theme.breakpoints.down('500')]: { // mobile breakpoint
+  //     width:'5%', // override for mobile 
+  //   },
+  //   [theme.breakpoints.up('501')]: { // desktop breakpoint and above 
+  //     width:'20%', // default value 
+  //   } 
+  // },
   textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    width: '35%', // default
+    // marginLeft: theme.spacing(1),
+    // marginRight: theme.spacing(1),
+    // width: '35%', // default
+    [theme.breakpoints.down('319')]: { // mobile breakpoint
+      width:'40%', // override for mobile 
+      marginLeft: theme.spacing(1),
+      marginRight: theme.spacing(1),
+    },
+    [theme.breakpoints.up('320')]: { // mobile breakpoint
+      width:'35%', // override for mobile 
+      marginLeft: theme.spacing(0.5),
+      marginRight: theme.spacing(0.5),
+    },
+    [theme.breakpoints.up('501')]: { // desktop breakpoint and above 
+      width:'35%', // default value 
+      marginLeft: theme.spacing(1),
+      marginRight: theme.spacing(1),
+    } 
   }  
 }));
 function updateSize() {
@@ -21,19 +51,20 @@ function updateSize() {
   let windowWidth = window.innerWidth;
 
   // set font size according to the window width
-  let maxSize = 1680
-  let minSize = 500;
-  let minFont = 1.0;
+  let maxSize = 1680;
+  let minSize = 320;
+  let minFont = 0.8;
   let maxFont = 1.8;
 
   let fontSize = (maxFont-minFont)/(maxSize-minSize) *(windowWidth -maxSize) + maxFont;
-  // console.log(windowWidth, 'fontsize', fontSize);
 
   let maxWidth = 50;
-  let minWidth = 70;
+  let minWidth = 100;
 
   let formWidth = (maxWidth-minWidth)/(maxSize-minSize) *(windowWidth -maxSize) + maxWidth;
   // .makeStyles-container-17
+  // console.log(windowWidth, 'fontsize', fontSize, formWidth);
+  formWidth = Math.floor(formWidth);
 
   document.querySelectorAll('.makeStyles-container-17').forEach(item =>{
     item.style.width = formWidth+"%";

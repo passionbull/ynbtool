@@ -1,14 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import { ArrowDownwardIcon } from "@material-ui/icons";
-import Button from "../components/Button";
 import Typography from "../components/Typography";
 import ProductHeroLayout from "./ProductHeroLayout";
 import TimeInput from './TimeInput';
 import TimestampInput from './NumberInput';
-
-import TextField from "@material-ui/core/TextField";
+import Table from '../components/Table';
+import { makeStyles } from "@material-ui/core/styles";
 
 const backgroundImage =
   "https://res.cloudinary.com/dnguyen/image/upload/ar_16:9,b_rgb:7c7979,c_fill,e_oil_paint:0,g_auto,z_1.2/v1567927617/namphuong/background_kcopck.jpg";
@@ -32,14 +30,27 @@ const styles = theme => ({
   more: {
     marginTop: theme.spacing(2)
   },
-
-  text_container: {
-    width:'30%' // default
-  },  
 });
+
+const useStyles = makeStyles(theme => ({
+  text_container: {
+
+    [theme.breakpoints.down('321')]: { // mobile breakpoint
+      width:'80%', // override for mobile 
+    },
+    [theme.breakpoints.up('322')]: { // mobile breakpoint
+      width:'70%', // override for mobile 
+    },
+    [theme.breakpoints.up('501')]: { // desktop breakpoint and above 
+      width:'60%', // default value 
+    } 
+  },  
+}));
 
 function ProductHero(props) {
   const { classes } = props;
+  const classes_ = useStyles();
+
   const [now, setNow] = React.useState(new Date());
   const [timestamp, setTimeStamp]= React.useState(0);
   const [date, setDate]= React.useState(0);
@@ -62,14 +73,13 @@ function ProductHero(props) {
   return (
     <ProductHeroLayout backgroundClassName={classes.background}>
       
-      <Typography color="inherit"  align="left" variant="h3">
-        유닉스 타임스탬프란?
+      <Typography color="inherit"  align="center" variant="h4">
+      디스코드 시간 변환기
       </Typography>
       <br />
 
-      <Typography style={{width:'70%'}} color="inherit" align="center" variant="h6" marked="center">
-        유닉스 타임스탬프 (unix timestamp or epoch timestamp)는 1970년 1월 1일 00:00:00 협정 세계시(UTC) 부터의 경과 시간을 초로 환산하여 표현됩니다. 이 타임스탬프는 디스코드 타임스탬프에 활용할 수 있습니다.  
-      </Typography> <span>{'<t:'+timestamp+'>'}</span>
+      <Typography className={classes_.text_container} color="inherit" align="center" variant="h6" marked="center"> 사용자의 현지시간을 표시하는 마크다운 텍스트를 만듭니다. 시간을 입력하고 아래 마크다운을 Discord에 복사하세요.
+      </Typography>
       <br />
       <br />
       <br />
@@ -80,14 +90,13 @@ function ProductHero(props) {
       <Typography color="inherit" align="center" variant="h4" marked="center">
       <span style={{ color: 'white' }}>{convertText}</span>: <span style={{ color: 'yellow' }}>{timestamp}</span>
       </Typography>
-      <br />
-      <br />
-      <br />
 
-      <TimestampInput  now={now} handleUpdate={handleTimeStampUpdate}></TimestampInput>
-      <Typography color="inherit" align="center" variant="h4" marked="center">
-      <span style={{ color: 'white' }}>{convertDateText}</span>: <span style={{ color: 'yellow' }}>{date.toLocaleString()}</span>
-      </Typography>
+      <Table timestamp={timestamp}></Table>
+
+
+
+
+
     </ProductHeroLayout>
   );
 }
